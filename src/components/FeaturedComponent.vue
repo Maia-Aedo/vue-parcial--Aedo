@@ -82,7 +82,7 @@ const cSettings = {
                 <Navigation>
                     <template #prev>
                         <span class="arrow">
-                            < </span>
+                            </span>
                     </template>
                     <template #next>
                         <span class="arrow">></span>

@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { BookOpenIcon, HomeIcon, ShoppingBagIcon, XCircleIcon } from '@heroicons/vue/24/outline';
 import { ref } from 'vue'
+import CartComponent from '@/components/CartComponent';
 
 // librerias
 import Sidebar from 'primevue/sidebar'
@@ -60,6 +61,7 @@ function openCloseSidebar() {
           <XCircleIcon class="h-8 w-8" @click="openCloseSidebar" />
         </div>
         <!-- aca insertar CarroComponent -->
+        <CartComponent />
       </div>
     </template>
   </Sidebar>
