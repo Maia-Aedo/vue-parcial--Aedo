@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { BookOpenIcon, HomeIcon, ShoppingBagIcon, XCircleIcon } from '@heroicons/vue/24/outline';
-import { ref } from 'vue'
-import CartComponent from '@/components/CartComponent';
+import { reactive, ref } from 'vue';
+import CartComponent from '@/components/CartComponent.vue';
+import { useCartStore } from '@/stores/CartStore'
 
 // librerias
 import Sidebar from 'primevue/sidebar'
-
 // Parcial: instanciar nuestro useCartStore en una variable const para utilizarla en el componente
 // Parcial: obtener la cantidad de libros en carrito del cartStore y pasarlo en qty tag
 
 // Barra Lateral
-const sidebarVisible = ref(false)
+const sidebarVisible = ref(false);
+
+const cartStore = useCartStore();
+
+const cart = reactive(cartStore)
 
 // Abrir / Cerrar barra lateral
 function openCloseSidebar() {
@@ -47,7 +51,7 @@ function openCloseSidebar() {
       </RouterLink>
       <div class="bag-icon" @click="openCloseSidebar()">
         <!-- modificar con la cantidad de items en carro. Si el carro esta vacio. -->
-        <div class="qty-tag">1</div>
+        <div v-show="cartStore.totalBooks > 0" class="qty-tag">{{ cartStore.totalBooks }}</div>
         <ShoppingBagIcon class="w-6 mr-2 text-slate-200" />
       </div>
     </div>
